@@ -1,0 +1,309 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: linear-gradient(
+        rgba(230, 230, 230, 0.8),
+        rgba(75, 75, 75, 0.8)
+      );
+}
+
+.navbar{
+    height: 17vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./Fotos/Inmofont.jpg);
+    background-size: cover;
+    background-position:center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.logo{
+    color: white;
+    font-size: 28px;
+}
+
+span{
+    color: #fdd037;
+}
+
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #fdd037;
+    transition: .3s;
+}
+
+button{
+    border: none;
+    background: #fdd037;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s;
+}
+
+button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/*---Portada Inicio---*/
+.contenedor2 {
+    opacity: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 800px;
+    text-align: center;
+  }
+
+.divtexto{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 300px;
+}
+  
+  .subtitulos1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+  
+  .p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: underline;
+    background-color: rgb(168, 151, 3);
+    border-radius: 4px
+  }
+  
+/*---Portada Inicio---*/
+
+
+
+/*---Tarjetas---*/
+
+.cajamadre{
+    border: 1px solid black;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+}
+
+/*.container{
+    border: 1px solid black;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 80px;
+    width: 560px;
+    display:flex;
+    max-width: 1300px;
+    max-height: 2500px;
+    padding: 0px
+    
+}
+*/
+.container{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px;
+
+    
+}
+
+/*.card{
+    width: 550px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}*/
+
+.card{
+    width: 500px;
+    height: 500px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #3e619b;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.4s ease;    
+}
+
+.card:hover{
+    box-shadow: 5px 5px 20px #020100cf;
+}
+
+.card img{
+    width: 100%;
+    border-radius: 6px;
+    height: 200px;
+}
+
+
+.card .contenido{
+    padding: 15px;
+    text-align: center;
+    color: azure;
+}
+
+.card .contenido h3{
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif; 
+    margin-bottom: 15px;
+}
+
+.card .contenido button{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    background: #fdd037 ;
+    color: #000000cf;
+}
+/*---Tarjetas---*/
+
+
+
+
+
+
+/*---Pie de Pagina---*/
+/*
+.piedepag{
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./Fotos/Inmofont.jpg);
+    background-size: cover;
+    background-position:center;
+    margin-top: auto;
+    
+    
+}
+
+.piedepag .grupo1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.piedepag .grupo1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.piedepag .grupo1 .box figure img{
+    width: 150px;
+    border-radius: 40px;
+    border-style: double;
+    border-color: #fdd037;
+}
+
+.piedepag .grupo1 .box h2{
+    color: rgb(255, 255, 255);
+    margin-bottom: 25px;
+    font-size: 20px;
+
+}
+.piedepag .grupo1 .box p{
+    color: #fdd037;
+    margin-bottom:10px ;
+}
+
+.piedepag .grupo1 .redsocial a{
+    display: inline-block;
+    text-decoration: none;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    color: black;
+    margin-right: 10px;
+    background-color: #fdd037;
+    text-align: center;
+    border-radius: 2px;
+    transition: all 300ms ease;
+}
+
+.piedepag .grupo1 .redsocial a:hover{
+    background-color: #01367e;
+    color: white;
+}
+
+.piedepag .grupo2{
+    background-color: grey;
+    padding: 15px 10px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.piedepag .grupo2 small{
+    font-size: 15px;
+}
+
+@media screen and (max-width:800px){
+    .piedepag .grupo1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 0px;
+    }
+}
+*/
+/*---Pie de Pagina---*/
+
+
+
+
+
+
+
