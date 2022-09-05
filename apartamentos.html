@@ -8,6 +8,7 @@
 
     <!-- CSS & JS & FavIcon-->
     <script defer src="main.js"></script>
+    <script defer src="modal.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./Fotos/favicon-32x32.png">
@@ -35,6 +36,7 @@
                 <li><a href="apartamentos.html">Inmuebles</a></li>
             </ul>
             <button type="button">WhatsApp</button>
+            <button id="favoritos-boton">Favoritos</button>
         </nav>
     </div>
     <div class="cajamadre">
@@ -58,9 +60,16 @@
             </div>
         </div>--->
         </div>
-    </div>
-    <!-- Pie de Pagina-->
-    <!--<footer class="piedepag">
+        <div class="modal-contenedor">
+            <div class="modal-favorito">
+                <h3>Favoritos✨</h3>
+                <button id="favoritoCerrar"><i class="fas fa-times-circle"></i></button>
+                <div id="favoritos-contenedor"></div>
+                <button id="vaciar-favoritos" class="boton-vaciar">Eliminar Favoritos</button>
+            </div>
+        </div>
+        <!-- Pie de Pagina-->
+        <!--<footer class="piedepag">
 
             <div class="grupo1">
                 <div class="box">
