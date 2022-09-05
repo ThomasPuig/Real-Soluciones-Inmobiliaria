@@ -66,7 +66,7 @@ let inmueblesDisponibles = [
             <h3> ${inmueble.nombre} </h3>
             <button id="${inmueble.id}">Mostrar descripcion</button>
             <button id="btn${inmueble.id}">Reseñas</button>
-            <button id="favorito${inmueble.id}">FAV✨</button>
+            <button id="favorito${inmueble.id}"<i class="fa-solid fa-heart"></i></button>
         </div>
     </div>`
     
@@ -93,7 +93,7 @@ let inmueblesDisponibles = [
             <h3> ${inmueble.info} </h3>
             <button id="${inmueble.id}">Ocultar descripcion</button>
             <button id="btn${inmueble.id}">Reseñas</button>
-            <button id="favorito${inmueble.id}">FAV✨</button>
+            <button id="favorito${inmueble.id}" <i class="fa-solid fa-heart"></i></button>
         </div>
     </div>`
     document.getElementById(`${inmueble.id}`).addEventListener("click", () => funcionDescripcion(inmueble), Swal.fire(
@@ -117,7 +117,7 @@ let inmueblesDisponibles = [
             <h3> ${inmueble.nombre} </h3>
             <button id="${inmueble.id}">Mostrar descripcion</button>
             <button id="btn${inmueble.id}">Reseñas</button>
-            <button id="favorito${inmueble.id}">FAV✨</button>
+            <button id="favorito${inmueble.id}"<i class="fa-solid fa-heart"></i></button>
         </div>
     </div>`
     document.getElementById(`${inmueble.id}`).addEventListener("click",  () => funcionBotones(inmueble));
@@ -134,7 +134,7 @@ fetch('https://jsonplaceholder.typicode.com/comments')
   .then((response) => response.json())
   .then((json) => console.log(json))
   .catch((error)=>console.log(error))
-  .finally(console.log("TAREA EJECUTADA"));
+  .finally(console.log("TAREA EJECUTADA CON EXITO"));
  }
 
 // API //
@@ -142,8 +142,38 @@ fetch('https://jsonplaceholder.typicode.com/comments')
 /*================================================================*/
 
 //FAVORITOS//
+const contenedorModal = document.getElementsByClassName('modal-contenedor')[0]
+const botonAbrir = document.getElementById('favoritos-boton')
+const botonCerrar = document.getElementById('favoritoCerrar')
+const modalFavorito = document.getElementsByClassName('modal-favorito')[0]
+
+
+botonAbrir.addEventListener('click', ()=>{
+    contenedorModal.classList.toggle('modal-active')
+})
+botonCerrar.addEventListener('click', ()=>{
+    contenedorModal.classList.toggle('modal-active')
+})
+
+contenedorModal.addEventListener('click', (event) =>{
+    contenedorModal.classList.toggle('modal-active')
+
+})
+modalFavorito.addEventListener('click', (event) => {
+    event.stopPropagation()
+})
+
+
+
+
+
+const contenedorFavoritos = document.getElementById('favoritos-contenedor')
+
+const botonVaciar = document.getElementById('vaciar-favoritos')
 
 let favoritos = []
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('favoritos')){
@@ -152,9 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-const contenedorFavoritos = document.getElementById('favoritos-contenedor')
-
-const botonVaciar = document.getElementById('vaciar-favoritos')
+botonVaciar.addEventListener('click', () => {
+    favoritos.length = 0
+    actualizarFavoritos()
+})
 
 const agregarAFavoritos = (inmuebleId) => {
     const item = inmueblesDisponibles.find((inmueble) => inmueble.id === inmuebleId)
@@ -163,10 +194,6 @@ const agregarAFavoritos = (inmuebleId) => {
     console.log(favoritos)
 }
 
-botonVaciar.addEventListener('click', () => {
-    favoritos.length = 0
-    actualizarFavoritos()
-})
 
 const eliminarDeFavoritos = (inmuebleId) => {
     const item = favoritos.find((inmueble) => inmueble.id === inmuebleId)
@@ -178,25 +205,21 @@ const eliminarDeFavoritos = (inmuebleId) => {
 const actualizarFavoritos = () => {
     contenedorFavoritos.innerHTML = "";
 
+favoritos.forEach((inmueble) => {
+    const div = document.createElement('div')
+    div.className = ('productoEnFavoritos')
+    div.innerHTML = `
+    <p>${inmueble.nombre}</p>
+    <p>Precio: ${inmueble.precio}</p>
+    <button onclick = "eliminarDeFavoritos(${inmueble.id})" class="boton-eliminar"><i class="fa-solid fa-trash"></i></button>
+    `
 
-    favoritos.forEach((inmueble) => {
-        const div = document.createElement('div')
-        div.className = ('productoEnFavoritos')
-        div.innerHTML = `
-        <p>${inmueble.nombre}</p>
-        <p>Precio: ${inmueble.precio}</p>
-        <button onclick = "eliminarDeFavoritos(${inmueble.id})" class="boton-eliminar"><i class="fa-solid fa-trash"></i></button>
-        `
+    contenedorFavoritos.appendChild(div)
 
-        contenedorFavoritos.appendChild(div)
+    localStorage.setItem('favoritos', JSON.stringify(favoritos))
 
-        localStorage.setItem('favoritos', JSON.stringify(favoritos))
-
-    })
+})
 }
-
-
-
 
 
 /*================================================================
