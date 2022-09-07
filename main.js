@@ -72,6 +72,8 @@ let inmueblesDisponibles = [
     
         contenedorInmuebles.appendChild(div)
 
+        
+
     })
     
     
@@ -79,6 +81,7 @@ let inmueblesDisponibles = [
         document.getElementById(`${inmueble.id}`).addEventListener("click", () => funcionBotones(inmueble));    
         document.getElementById(`btn${inmueble.id}`).addEventListener("click",  () => programarBotones(inmueble));
         document.getElementById(`favorito${inmueble.id}`).addEventListener("click", () => agregarAFavoritos(inmueble.id))
+        
     }) 
        
     function funcionBotones(inmueble){
@@ -102,7 +105,7 @@ let inmueblesDisponibles = [
         'success'
       ), )
 
-
+      localStorage.setItem('favoritos', JSON.stringify(favoritos))
 
     }
 
@@ -123,6 +126,8 @@ let inmueblesDisponibles = [
     document.getElementById(`${inmueble.id}`).addEventListener("click",  () => funcionBotones(inmueble));
     document.getElementById(`btn${inmueble.id}`).addEventListener("click",  () => programarBotones(inmueble));
     document.getElementById(`favorito${inmueble.id}`).addEventListener("click", () => agregarAFavoritos(inmueble.id))
+
+    localStorage.setItem('favoritos', JSON.stringify(favoritos))
 }
 
 /*================================================================*/
@@ -188,9 +193,19 @@ botonVaciar.addEventListener('click', () => {
 })
 
 const agregarAFavoritos = (inmuebleId) => {
-    const item = inmueblesDisponibles.find((inmueble) => inmueble.id === inmuebleId)
-    favoritos.push(item)
-    actualizarFavoritos()
+    const existe = favoritos.some (inmueble => inmueble.id === inmuebleId)
+    if (existe){
+        Swal.fire(
+            'Ups!',
+            'Este inmueble ya fue agregado a favoritos!',
+            'warning'
+          )
+    }
+    else {
+        const item = inmueblesDisponibles.find((inmueble) => inmueble.id === inmuebleId)
+        favoritos.push(item)
+        actualizarFavoritos()
+    }
     console.log(favoritos)
 }
 
@@ -200,6 +215,8 @@ const eliminarDeFavoritos = (inmuebleId) => {
     const indice = favoritos.indexOf(item)
     favoritos.splice(indice, 1)
     actualizarFavoritos()
+
+    console.log(favoritos)
 }
 
 const actualizarFavoritos = () => {
